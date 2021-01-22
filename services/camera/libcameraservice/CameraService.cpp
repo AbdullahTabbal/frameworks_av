@@ -100,7 +100,6 @@ using hardware::camera::common::V1_0::CameraDeviceStatus;
 using hardware::camera::common::V1_0::TorchModeStatus;
 using hardware::camera2::utils::CameraIdAndSessionConfiguration;
 using hardware::camera2::utils::ConcurrentCameraIdCombination;
-
 using vendor::lineage::camera::motor::V1_0::ICameraMotor;
 
 // ----------------------------------------------------------------------------
@@ -2980,13 +2979,9 @@ status_t CameraService::BasicClient::startCameraOps() {
     sCameraService->updateOpenCloseStatus(mCameraIdStr, true/*open*/, mClientPackageName);
 
 #ifdef TARGET_NEEDS_CLIENT_INFO
-    std::ofstream cpf("/data/misc/camera/client_package_name");
+    std::ofstream cpf("/data/misc/cherish/client_package_name");
     std::string cpn = String8(mClientPackageName).string();
-    if (cpn.compare("com.oneplus.camera") == 0) {
-        cpf << "com.oneplus.camera";
-    } else {
-        cpf << "";
-    }
+    cpf << cpn;
 #endif
 
     return OK;

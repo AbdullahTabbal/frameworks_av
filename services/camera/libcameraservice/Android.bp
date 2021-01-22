@@ -20,12 +20,11 @@ cc_library_shared {
     name: "libcameraservice",
     defaults: [
         "no_cameraserver_defaults",
-        "qti_camera_device_defaults",
-        "needs_camera_boottime" ,
-      ],
-
+        "qti_camera_device_defaults"
+    ],
 
     // Camera service source
+
     srcs: [
         "CameraService.cpp",
         "CameraFlashlight.cpp",
@@ -163,5 +162,4 @@ cc_library_shared {
         "-Werror",
         "-Wno-ignored-qualifiers",
     ],
-
 }
